@@ -8,6 +8,10 @@ const Plant = DB.define('plants', {
         primaryKey: true,
         autoIncrement: true
     },
+    plant_title: {
+        type: DataTypes.STRING(60),
+        allowNull: false
+    },
     description: {
         type: DataTypes.STRING(100),
         allowNull: true
