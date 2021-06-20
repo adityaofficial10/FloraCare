@@ -43,7 +43,7 @@ let storage = multer.diskStorage({
       cb(null, __dirname + '/uploads');
     },
     filename: function (req, file, cb) {
-      cb(null, file.originalname);
+      cb(null, 'plant.jpg');
     },
     onFileUploadStart: function (file) {
         console.log(file.fieldname + ' is starting ...')
