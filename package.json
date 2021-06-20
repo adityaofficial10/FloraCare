@@ -4,7 +4,6 @@
   "description": "MLH Hackathon 18 June 2021",
   "main": "index.js",
   "scripts": {
-    "build": "npm install",
     "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
