@@ -1,0 +1,39 @@
+body{
+  background-color: #d6ffd4;
+  margin-left: 100px;
+  margin-right:200px;
+}
+h1{
+  color: #b24747;
+}
+label{
+  color: #f59494;
+}
+.btn {
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 60px;
+  background: #f59494;
+  padding: 0px 11px 0px 9px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #b24747;
+  text-decoration: none;
+}
+table tr td{
+  border: 1px solid black;
+}
+.journal-title{
+  color: #b24747;
+}
+.plant-name{
+  color: #f59494;
+}
+.author-name{
+  color: #727474;
+}
