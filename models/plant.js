@@ -8,17 +8,6 @@ const Plant = DB.define('plants', {
         primaryKey: true,
         autoIncrement: true
     },
-<<<<<<< HEAD
-    title: {
-        type: DataTypes.STRING(50),
-        allowNull: false
-    },
-    plant_title: {
-        type: DataTypes.STRING(60),
-        allowNull: false
-    },
-||||||| 65480ad
-=======
     title: {
         type: DataTypes.STRING(60),
         allowNull: false
@@ -27,7 +16,6 @@ const Plant = DB.define('plants', {
         type: DataTypes.STRING(60),
         allowNull: false
     },
->>>>>>> d253fb30406ed18671c1a61058473f73c7ca910a
     description: {
         type: DataTypes.STRING(100),
         allowNull: true
