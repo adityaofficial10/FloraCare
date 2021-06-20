@@ -1,0 +1,55 @@
+<center>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+
+    <body style="background-color: #d6ffd4">
+        <h1 style="color:#b24747">Capture image to classify</h1>
+        <section>
+            <div class="u-clearfix u-sheet u-sheet-1">
+                {% if not resp %}
+                <div id="container">
+                    <video autoplay="true" id="videoElement"></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                    <button onclick="take_pic()" style="position: absolute; z-index: 100;">Capture</button>
+                </div>
+
+                <form action = '/plantDetails' method="post" enctype="multipart/form-data" id="mform">
+                    <label for="image">Select Image</label>
+                    <input name="myFile" id="image" type="file" accept="image/*">
+                    <input name="cap-img" id="cap-img" type="text" value="" hidden>
+                    <br>
+                    <button type="submit">Classify</button>
+                </form>
+            </div>
+        </section>
+        <script>
+            var video = document.querySelector("#videoElement");
+            if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function (stream) {
+                        video.srcObject = stream;
+                    })
+                    .catch(function (err0r) {
+                        console.log("Something went wrong!");
+                    });
+            }
+            function take_pic() {
+                console.log("dfddddddd")
+                var canvas = document.getElementById('canvas');
+                var video = document.getElementById('videoElement');
+
+                canvas.width = 200;
+                canvas.height = 200;
+                canvas.getContext('2d').drawImage(video, 0, 0, 200, 200);
+                document.getElementById('cap-img').value = canvas.toDataURL();
+                document.getElementById('mform').submit();
+            }
+        </script>
+    </body>
+
+    </html>

@@ -35,10 +35,10 @@ const User = DB.define('users', {
     }
 });
 
-User.sync({
+/*User.sync({
     force: true
 }).then((user) => {
     console.log('=> User table connected!');
-});
+});*/
 
 module.exports = User;

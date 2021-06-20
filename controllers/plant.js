@@ -1,9 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const Classification = require('../models/classification');
+const Disease = require('../models/diseases');
 const diseaseURL = 'https://automl.googleapis.com/v1beta1/projects/248027501302/locations/us-central1/models/ICN7501490648269193216:predict';
 const classificationURL = 'https://automl.googleapis.com/v1beta1/projects/248027501302/locations/us-central1/models/ICN8228821988089528320:predict';
-const access_token = 'ya29.c.Kp8BBAinVL3ImRiPwkc7mzmIDXtBpCUIAmJFhGNtZIJQgbmP8HXwBqZg9jRAp7UjkN8DBVLh96cJaPiTzt_l2neXy8zcAGrmAZcPUuVldMBxGN7gThBx9Z7jlkYaLHZik57E1NFV03hHIvhXE02odSPzo0qi7BWnNwyFNkWbmx3GtC2anDLwjZAWa5oV6UXM1kxyFK-5G4DFRfSeyTSAc0Xl';
+const access_token = 'ya29.c.Kp8BBAicYFaosGxAMVkVmtzeRgq5Vo25Yjp7GwF2LE4c533BEIY6BiaCv26CDfMKGSM_2jE57C8lNkBPiVaQnDcbhLgna03MfNSoCb5A3NAKKmmA1Ita9G9M68Xl-fafYRyt7TijKt1ZVUvt85j482DtUUXyLWXOYzaE5scO5u0xJZqNCMeYHZ_MohkUvv92UtBvhV-q_lHL7pFmDic3gWxe';
 
 module.exports = {
   uploadAndGetPredictions: async function (req, res, next) {
@@ -39,6 +41,18 @@ module.exports = {
         console.log(res2.data);
         disease = res2.data.payload[0].displayName;
       }
+      let plantObject = await Classification.findOne({
+        raw: true,
+        where: {
+          plant_name: plant
+        }
+      });
+      let diseaseObject = await Disease.findOne({
+        raw: true,
+        where: {
+          disease_name: disease
+        }
+      });
       /*fs.readdir(directory, (err, files) => {
         if (err) throw err;
 
@@ -48,8 +62,7 @@ module.exports = {
           });
         }
       });*/
-      res.json(
-        {message: 'Success', status: 200, plant: plant, disease: disease});
+      res.render('plant_details', { plant: plantObject, disease: diseaseObject });
     }
   }
 };

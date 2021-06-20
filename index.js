@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const _ = require('lodash');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const {login, register, authenticate} = require('./controllers/auth');
+const {login, register, authenticate, checkAuthenticated} = require('./controllers/auth');
 const {insertJournal, getAllJournals, getJournalById} = require('./controllers/journal');
 const {uploadAndGetPredictions} = require('./controllers/plant');
 const bodyParser = require('body-parser');
@@ -59,13 +59,42 @@ let storage = multer.diskStorage({
    
 let upload = multer({ storage: storage })
 
-app.post('/login', login);
-app.post('/register', register);
-app.post('/journal/create', authenticate, insertJournal);
-app.get('/journal/getAll', authenticate, getAllJournals);
-app.post('/journal/get', authenticate, getJournalById);
-app.post('/plantDetails', upload.single('myFile'), uploadAndGetPredictions);
+app.get('/', function(req, res, next) {
+    res.render('index');
+});
 
+app.get('/login', checkAuthenticated,function(req, res, next) {
+    res.render('login');
+});
+app.post('/login', login, function(req, res, next) {
+    res.redirect('/main');
+});
+
+app.get('/main', authenticate, function(req, res, next) {
+    res.render('main-page');
+});
+
+app.get('/register', function(req, res, next) {
+    res.render('signup');
+});
+app.post('/register', register);
+
+app.get('/journal', authenticate, function(req, res, next) {
+    res.render('journal');
+});
+
+app.get('/journal/create', authenticate, function(req, res, next) {
+    res.render('insertjournal');
+});
+app.post('/journal/create', authenticate, insertJournal, function(req, res, next) {
+    res.redirect('/journal/getAll');
+});
+app.get('/journal/getAll', authenticate, getAllJournals);
+app.get('/journal/get/:id', authenticate, getJournalById);
+app.get('/plantDetails', authenticate, function(req, res, next){
+    res.render('plant_classify');
+});
+app.post('/plantDetails', upload.single('myFile'), uploadAndGetPredictions);
 
 app.listen(3000, function() {
     console.log('Server listening on port 3000...');

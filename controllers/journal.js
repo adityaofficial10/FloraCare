@@ -4,6 +4,7 @@ const userModel = require('../models/user');
 module.exports = {
     insertJournal: async function(req, res, next) {
         const data = req.body;
+        console.log(data);
         let user = await userModel.findOne({
             where: {
                 username: data.username
@@ -34,20 +35,24 @@ module.exports = {
         });
     },
     getAllJournals: async function(req, res, next) {
-        let journals = journalModel.findAll();
-        if(journals && journals.length) {
-            res.json({message: 'Journals fetched!', status: 200, journals: journals});
+        let journals = await journalModel.findAll({
+            raw: true
+        });
+        console.log(journals);
+        if(journals) {
+            res.render('community', { journals: journals });
         } else {
             res.send('there was a problem processing the request');
         }
     },
     getJournalById: async function(req, res, next) {
-        let id = req.body.id;
+        let id = req.params.id;
         let journal = await journalModel.findOne({
             where: {
                 plant_id: id
             }
         });
+        console.log(journal);
         if(journal)
           res.json({message: 'Journal fetched!', status: 200, journal: journal});
         else

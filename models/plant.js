@@ -66,10 +66,5 @@ const Plant = DB.define('plants', {
     }
 });
 
-Plant.sync({
-    force: true
-}).then((plant) => {
-    console.log('=> Plant table connected!');
-});
 
 module.exports = Plant;

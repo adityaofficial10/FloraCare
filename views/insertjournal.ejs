@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body style="background-color: #d6ffd4 !important; margin-left: 100px">
+  <h1 style="color: #b24747">Input your Plant Journal</h1>
+  <form class="" action="/journal/create" method="POST">
+    <label for="postTitle" style="color: #f59494">Plant Title:</label>
+    <br>
+    <input type="text" name="title" />
+    <br>
+    <label for="postTitle" style="color: #f59494">Plant Name:</label>
+    <br>
+    <input type="text" name="plant_title" />
+    <br>
+    <label for="postContent" style="color: #f59494">Description:</label>
+    <br>
+    <textarea name="description" cols="60" rows="2" minlength="20" maxlength="500" required></textarea>
+    <br>
+    <label for="postTitle" style="color: #f59494">Water Amount:</label>
+    <br>
+    <input type="text" name="water_amount" />
+    <br>
+    <label for="postTitle" style="color: #f59494">Sunlight Needed:</label>
+    <br>
+    <input type="text" name="sunlight_needed" />
+    <br>
+    <label for="postContent" style="color: #f59494">Active Seasons:</label>
+    <br>
+    <textarea name="active_seasons" cols="60" rows="2" minlength="20" maxlength="500" required></textarea>
+    <br>
+    <label for="postContent" style="color: #f59494">Active From:</label>
+    <br>
+    <textarea name="active_from" cols="60" rows="2" minlength="20" maxlength="500" required></textarea>
+    <br>
+    <label for="postContent" style="color: #f59494">Manure/Fertilizer:</label>
+    <br>
+    <textarea name="manure" cols="60" rows="2" minlength="20" maxlength="500" required></textarea>
+    <br>
+    <label for="postContent" style="color: #f59494">Diseases Susceptible To:</label>
+    <br>
+    <textarea name="diseases" cols="60" rows="2" minlength="20" maxlength="500" required></textarea>
+    <br>
+    <label for="postContent" style="color: #f59494">Growing Method:</label>
+    <br>
+    <textarea name="growing_method" cols="60" rows="2" minlength="20" maxlength="500" required></textarea>
+    <br>
+    <label for="postContent" style="color: #f59494">Special Requirements:</label>
+    <br>
+    <textarea name="special_requirements" cols="60" rows="2" minlength="20" maxlength="500" required></textarea>
+    <br>
+    <label for="postContent" style="color: #f59494">Additional Info:</label>
+    <br>
+    <textarea name="additional_info" cols="60" rows="3" minlength="20" maxlength="500" required></textarea>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</body>
+
+</html>

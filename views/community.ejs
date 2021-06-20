@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Journals</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body style="background-color: #d6ffd4 !important">
+    <h1 style= "color: #b24747">Plant Records</h1>
+    <table class="table table-bordered">
+  <tbody>
+    <% for(var x = 0; x < journals.length; x++){ %>
+    <tr>
+      <th width="5%" scope="row">1</th>
+      <td><h2 class="journal-title" style = "color: #b24747"><a href="/journal/get?id=<%= journals[x].plant_id %>"><%= journals[x].title %></a></h2>
+      <h4 class="plant-name" style = "color: #f59494"><%= journals[x].plant_title %></h4></td>
+      <td width="20%"><h3 class="author-name" style="color: #727474">@<%= journals[x].username %></h3></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+  </body>
+</html>
