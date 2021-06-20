@@ -5,8 +5,7 @@ const Classification = require('../models/classification');
 const Disease = require('../models/diseases');
 const diseaseURL = 'https://automl.googleapis.com/v1beta1/projects/248027501302/locations/us-central1/models/ICN7501490648269193216:predict';
 const classificationURL = 'https://automl.googleapis.com/v1beta1/projects/248027501302/locations/us-central1/models/ICN8228821988089528320:predict';
-const access_token = 'ya29.c.Kp8BBAicYFaosGxAMVkVmtzeRgq5Vo25Yjp7GwF2LE4c533BEIY6BiaCv26CDfMKGSM_2jE57C8lNkBPiVaQnDcbhLgna03MfNSoCb5A3NAKKmmA1Ita9G9M68Xl-fafYRyt7TijKt1ZVUvt85j482DtUUXyLWXOYzaE5scO5u0xJZqNCMeYHZ_MohkUvv92UtBvhV-q_lHL7pFmDic3gWxe';
-
+const access_token = 'ya29.c.Kp8BBAg8MoBUbWOZV9OsB0LrHB3VOpNXhAjnzm39QMQEmTcm_8BGodKFU7jww-EB2M38Y0jH6jaoOzox_OBpEU1sh2x6ajHV5VTpx65BQ_QpuFjpU3rOx_X0Qg-FLzY6TLSg31v2BUIm4WOiw8uzD74c-kFakNUkPEJbt3L3qHbKnI2Oc4aaTZFYD06LNrZRkktm5lDRfr_Igt6nXnDbBAr1';
 module.exports = {
   uploadAndGetPredictions: async function (req, res, next) {
     let file = req.file;
