@@ -1,2 +1,13 @@
 runtime: nodejs14
-entrypoint: npm start
+env: flex
+manual_scaling:
+  instances: 1
+resources: 
+   cpu: .5
+   memory_gb: 0.5
+   disc_size_gb: 10
+handlers:
+  -url: /
+   static_files: views/
+ 
+  
