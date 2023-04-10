@@ -1,6 +1,7 @@
-const SerialPort = require('serialport');
-const Readline = require('@serialport/parser-readline');
-const port = new SerialPort('COM7', { baudRate: 9600 });
+const SerialPort = require('serialport').SerialPort;
+const port = new SerialPort({path: "COM7", baudRate: 9600 });
+const Readline = require('@serialport/parser-readline').ReadlineParser;
+
 const parser = port.pipe(new Readline({ delimiter: '\n' }));
 
 
