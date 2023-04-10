@@ -60,7 +60,17 @@ let storage = multer.diskStorage({
 let upload = multer({ storage: storage })
 
 app.get('/', function(req, res, next) {
+    port.write('hello from node\n', (err) => {
+        if (err) {
+          return console.log('Error on write: ', err.message);
+        }
+        console.log('message written');
+    });
     res.render('index');
+});
+
+app.get("/not-watered", function(req, res, next) {
+    res.render("not-watered");
 });
 
 app.get('/login', checkAuthenticated,function(req, res, next) {
